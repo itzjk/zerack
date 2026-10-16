@@ -94,7 +94,7 @@ Each one is reached by typing in the chat in English or Spanish, by voice, from 
 
 ```
 git clone <this repo>
-cd cashcow-radar-agent
+cd zerack
 ```
 
 Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked**, and pick this folder. Nothing to build. `scripts/fetch-assets.sh` downloads the local Whisper model the voice falls back to when Chrome's own speech recognition cannot run; you only need it if those files are missing.

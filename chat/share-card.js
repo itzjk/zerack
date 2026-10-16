@@ -10,8 +10,8 @@
   var MUTED = 'rgba(255,255,255,0.58)';
   var FAINT = 'rgba(255,255,255,0.36)';
   var LINE = 'rgba(255,255,255,0.12)';
-  var REPO = 'https://github.com/itzjk/cashcow-radar-agent';
-  var REPO_SHORT = 'github.com/itzjk/cashcow-radar-agent';
+  var REPO = 'https://github.com/itzjk/zerack';
+  var REPO_SHORT = 'github.com/itzjk/zerack';
   var ELLIPSIS = '\u2026';
   var markPromise = null;
 
