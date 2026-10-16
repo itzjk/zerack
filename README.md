@@ -1,4 +1,13 @@
-# cashcow-radar-agent
+# ZERACK
+
+**Eleven browser agents that work inside the pages a business already runs on:** YouTube Studio, Shopify, Etsy, Amazon, Upwork, Search Console and more. Each one reads the page, decides with measured numbers, drafts the work, and stops at a safety gate until you click before anything is paid, published, sent or deleted.
+
+- Chrome extension (Manifest V3). No server, no account, no telemetry.
+- The numbers come from deterministic engines in `lib/`, never from a model. The model only writes.
+- When a site changes its layout, the page readers answer *drift* instead of guessing a number.
+- Built solo. [Limits](#limits) lists what has not been tested on a live page yet.
+
+---
 
 ZERACK is a Chrome extension (Manifest V3) with two jobs. On YouTube it reads channels the way an owner needs them read: why a channel blew up, what your own channel should do next, what moved overnight, and what to make. On any other site you allow, its chat works as an operator for the business in front of you: a store, a marketplace listing, a product you are building, a freelance job board, a newsletter. It reads the page, decides with measured numbers, and waits for your own click before anything is paid, published, sent or deleted.
 
