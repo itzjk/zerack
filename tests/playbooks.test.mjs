@@ -1,14 +1,14 @@
 // The business playbooks: their shape, the sources behind every lesson, the fees they pin, the hosts they claim and the gate words they add.
 import { load, check, done } from "./engines.mjs";
 
-const C = load(["etsy", "shopify", "seo", "builders", "creators", "freelance", "local", "amazon", "newsletter", "digital", "index"].map(f => "knowledge/playbooks/" + f + ".js").concat(["lib/nsp-gate.js"]), { URL });
+const C = load(["etsy", "shopify", "seo", "builders", "creators", "x", "freelance", "local", "amazon", "newsletter", "digital", "index"].map(f => "knowledge/playbooks/" + f + ".js").concat(["lib/nsp-gate.js"]), { URL });
 const E = load(["lib/nsp-extract.js"], { URL, document: { querySelectorAll: () => [], querySelector: () => null, title: "" }, location: { href: "https://example.com/", hostname: "example.com", pathname: "/" } });
 C.self = C;
 const P = C.NSP_PLAYBOOKS, G = C.NSP_GATE;
 const READERS = E.NSP_EXTRACT.readers;
 const YT = /you ?tube|faceless|\bniches?\b|\bvph\b|thumbnail|\bchannels?\b|\bshorts\b|\bvideos?\b|views per hour/i;
 
-check("ten playbooks load: Etsy, Shopify, SEO, builders, creators, freelance, local, Amazon, newsletters and digital products", JSON.stringify(P.list().map(p => p.id)) === '["etsy","shopify","seo","builders","creators","freelance","local","amazon","newsletter","digital"]');
+check("eleven playbooks load: Etsy, Shopify, SEO, builders, creators, X, freelance, local, Amazon, newsletters and digital products", JSON.stringify(P.list().map(p => p.id)) === '["etsy","shopify","seo","builders","creators","x","freelance","local","amazon","newsletter","digital"]');
 const VIDEO_OK = /you ?tube|faceless channel|\bvph\b|views per hour|thumbnail/i;
 
 for (const pb of P.list()) {

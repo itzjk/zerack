@@ -1,15 +1,15 @@
 // The named AI agents: one per playbook plus YouTube, picked by host or by the user, and the brain's identity says which one is talking.
 import { load, check, done } from "./engines.mjs";
 
-const PB = ["etsy", "shopify", "seo", "builders", "creators", "freelance", "local", "amazon", "newsletter", "digital", "index"].map(f => "knowledge/playbooks/" + f + ".js");
+const PB = ["etsy", "shopify", "seo", "builders", "creators", "x", "freelance", "local", "amazon", "newsletter", "digital", "index"].map(f => "knowledge/playbooks/" + f + ".js");
 const C = load(["knowledge/youtube-playbook.js", "knowledge/reverse-engine.js", "knowledge/course.js"].concat(PB, ["lib/nsp-agents.js", "lib/nsp-brain.js", "chat/chat-tools.js"]), { URL });
 C.self = C;
 const A = C.NSP_AGENTS, P = C.NSP_PLAYBOOKS, B = C.NSP_BRAIN, T = C.NSP_CHAT_TOOLS;
 const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/u;
 
 const list = A.list();
-check("eleven agents in the roster order: YouTube, Shopify, Etsy, Amazon, Creators, Freelance, Local business, SEO, Newsletter, Digital products, Builders",
-  JSON.stringify(list.map(a => a.name)) === '["YouTube agent","Shopify agent","Etsy agent","Amazon agent","Creators agent","Freelance agent","Local business agent","SEO agent","Newsletter agent","Digital products agent","Builders agent"]', list.map(a => a.name));
+check("twelve agents in the roster order: YouTube, Shopify, Etsy, Amazon, Creators, X, Freelance, Local business, SEO, Newsletter, Digital products, Builders",
+  JSON.stringify(list.map(a => a.name)) === '["YouTube agent","Shopify agent","Etsy agent","Amazon agent","Creators agent","X agent","Freelance agent","Local business agent","SEO agent","Newsletter agent","Digital products agent","Builders agent"]', list.map(a => a.name));
 check("every playbook is an agent and every business agent has its playbook, so no agent is invented", P.list().every(pb => A.get(pb.id) && A.get(pb.id).playbook === pb.id) && list.filter(a => a.id !== "youtube").every(a => P.get(a.id)), list.map(a => a.id));
 check("there is no SaaS agent without a playbook: SaaS lives in the Builders agent", !A.get("saas") && /SaaS/.test(P.get("builders").business) && /SaaS/.test(P.get("builders").identity));
 for (const a of list) {
@@ -64,7 +64,7 @@ for (const pb of P.list()) {
   const panel = B.parts({ surface: "youtube", query: "scan" }).find(x => x.id === "identity");
   check("and so does the panel on youtube.com", /^You are the ZERACK YouTube agent/.test(panel.text) && /^You are the ZERACK YouTube agent/.test(panel.lean));
   const roster = y.parts.find(x => x.id === "agents");
-  check("a fill part names the other agents and says to point the user at the right one, without claiming their tools", roster && roster.need === "fill" && /you are the YouTube agent, one of the AI agents in the chat header/.test(roster.text) && /Shopify, Etsy, Amazon, Creators, Freelance, Local business, SEO, Newsletter, Digital products, Builders/.test(roster.text) && /never claim its tools/.test(roster.text), roster);
+  check("a fill part names the other agents and says to point the user at the right one, without claiming their tools", roster && roster.need === "fill" && /you are the YouTube agent, one of the AI agents in the chat header/.test(roster.text) && /Shopify, Etsy, Amazon, Creators, X, Freelance, Local business, SEO, Newsletter, Digital products, Builders/.test(roster.text) && /never claim its tools/.test(roster.text), roster);
 }
 {
   const etsy = web("www.etsy.com");

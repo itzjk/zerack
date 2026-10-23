@@ -1,6 +1,6 @@
 (function (root) {
   var owns = Object.prototype.hasOwnProperty;
-  var IDS = ['etsy', 'shopify', 'seo', 'builders', 'creators', 'freelance', 'local', 'amazon', 'newsletter', 'digital'];
+  var IDS = ['etsy', 'shopify', 'seo', 'builders', 'creators', 'x', 'freelance', 'local', 'amazon', 'newsletter', 'digital'];
   var PRIMER_MAX = 1900;
   var LOOKUP_MAX = 2;
   var KINDS = { Publish: 1, Delete: 1, Send: 1, Pay: 1, Fulfill: 1 };
